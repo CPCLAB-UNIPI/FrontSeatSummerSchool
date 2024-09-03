@@ -22,7 +22,7 @@ from Estimator import *
 from Control_Calc import *
 from Default_Values import *
 
-ex_name = __import__('Ex_LMPC_WB') # Insert here your file name
+ex_name = __import__('Ex_NMPC_FSSS') # Insert here your file name
 import sys
 sys.modules['ex_name'] = ex_name
 from ex_name import * #Loading example
@@ -58,7 +58,7 @@ if 'Ws' in locals() and slacks == True:
 else:
     Ws = []
     ns = 0
-    
+   
 ###################################################
 
 ########## Fixed symbolic variables #########################################
@@ -452,6 +452,7 @@ xhat_k = DM(x0_m)
 lambdaT_k = np.zeros((ny,nu))
 cor_k = 0.00*np.ones((ny,1))
 delta_k = np.zeros((nu,ny))
+sl_k = DM.zeros(ns)
 try:
     P_k = P0
 except NameError:
@@ -754,6 +755,7 @@ for ksim in range(Nsim):
                     w_guess[key*nxu:key*nxu+nx] = x0_m
                 
             w_guess[0:nx] = x0_m #x0
+            w_guess[nw-ns:nw] = sl_k
         else:
             ## Initial guess (warm start)
             if Collocation == True:
