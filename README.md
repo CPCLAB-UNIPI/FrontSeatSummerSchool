@@ -19,6 +19,6 @@ The following steps will get you started for the exercise sessions:
        Open the command palette (Crtl+Shift+p) -> "Python: Run Python file in terminal" -> enter
 
 7. ML Workshop day 3. - Neuromancer package
-+ <a target="_blank" href="[https://colab.research.google.com/github/pnnl/neuromancer/blob/master/examples/tutorials/part_1_linear_regression.ipynb](https://colab.research.google.com/github/CPCLAB-UNIPI/FrontSeatSummerSchool/blob/main/Ex_ML.ipynb)"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
++ <a target="_blank" href="https://colab.research.google.com/github/pnnl/neuromancer/blob/master/examples/tutorials/part_1_linear_regression.ipynb](https://colab.research.google.com/github/CPCLAB-UNIPI/FrontSeatSummerSchool/blob/main/Ex_ML.ipynb)"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 A Google account is required to access the Google Colab. If you want to save the changes, click on "Copy to Drive" button at the top of the page. You can run each command individually, by pressing the play button at each line (Ctrl+Enter) or you can run the whole code by clicking on "Runtime" -> "Run all"
 
