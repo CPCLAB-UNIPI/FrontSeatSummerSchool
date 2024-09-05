@@ -65,11 +65,29 @@ def main_mpc_open_loop():
     params = CSTRParameters()
     dt = 0.25
     num_rk4_steps = 10
-    model = setup_cstr_model(dt, num_rk4_steps, params)
+    
+    # Nonlinear model
+    #model = setup_cstr_model(dt, num_rk4_steps, params)
 
-    x0 = np.array([0.05, 0.75, 0.5]) * model.x_steady_state.ravel()
+    A = np.array([[0.2681, -3.38*1e-03, -7.28*1e-03], [9.703, .3279, -25.44], [0.0, 0.0, 1.0]])
+    B = np.array([[-5.37*1e-03, 0.1655], [1.297, 97.91], [0.0, -6.637]])
+    C = np.array([[1.0, 0.0, 0.0], [0.0, 1.0, 0.0],[0.0, 0.0, 1.0]])
+
+    # set up states
+    x = ca.SX.sym("x",3)
+
+    # controls
+    u = ca.SX.sym("u",2)
+
+    # TODO setup model expressions
+    # Use x and u to set up the model expression
+    # the references are given by xs and us
+    # the model matrices are given by A, B, and C
+    model = 42
+
     xs = params.xs
     us = params.us
+    x0 = np.array([0.05, 0.75, 0.5]) * xs.ravel()
     N_horizon = 20
 
     # NOTE: computed with setup_linearized_model()
