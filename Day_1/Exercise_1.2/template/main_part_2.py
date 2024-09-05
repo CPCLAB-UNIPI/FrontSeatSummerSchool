@@ -71,7 +71,6 @@ def main_mpc_open_loop():
 
     A = np.array([[0.2681, -3.38*1e-03, -7.28*1e-03], [9.703, .3279, -25.44], [0.0, 0.0, 1.0]])
     B = np.array([[-5.37*1e-03, 0.1655], [1.297, 97.91], [0.0, -6.637]])
-    C = np.array([[1.0, 0.0, 0.0], [0.0, 1.0, 0.0],[0.0, 0.0, 1.0]])
 
     # set up states
     x = ca.SX.sym("x",3)
@@ -79,11 +78,13 @@ def main_mpc_open_loop():
     # controls
     u = ca.SX.sym("u",2)
 
-    # TODO setup model expressions
+    # TODO setup f_discrete expressions
     # Use x and u to set up the model expression
     # the references are given by xs and us
-    # the model matrices are given by A, B, and C
-    model = 42
+    # the model matrices are given by A and B
+    f_discrete = 42
+
+    model = Model(x, u, f_discrete, xs, us, name='cstr')
 
     xs = params.xs
     us = params.us
