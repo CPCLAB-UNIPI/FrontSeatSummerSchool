@@ -1,6 +1,6 @@
 The following steps will get you started for the exercise sessions:
 
-1. Clone / Download this repository
+1. Clone this repository (green button "Code")
 2. Install VSCode: https://code.visualstudio.com/
 3. Install Docker Desktop for your operating system:
    [Ubuntu](https://docs.docker.com/desktop/install/ubuntu/), [Other Linux](https://docs.docker.com/desktop/install/linux-install/), [Windows](https://docs.docker.com/desktop/install/windows-install/), [MacOS](https://docs.docker.com/desktop/install/mac-install/).
@@ -17,4 +17,6 @@ The following steps will get you started for the exercise sessions:
 
 6. Test the container: Open an example: `casadi_test.py` or `mpc_acados/minimal_example_ocp.py`
        Open the command palette (Crtl+Shift+p) -> "Python: Run Python file in terminal" -> enter
+
+7. Workshop day 3. A Google account is required to access the Google Colab.
 
