@@ -19,7 +19,7 @@ from Utilities import*
 # 1.1) Simulation discretization parameters
 Nsim = 50 # Simulation length
 
-N = 30    # Horizon
+N = 20    # Horizon
 
 h = 0.25 # Time step
 
@@ -125,7 +125,7 @@ def User_fxm_Cont(x,u,d,t,px):
     OUTPUTS:
     + x_model       - Non-linear model function     
     """ 
-    F0 = 0.1#d[1]
+    F0 = 0.1# #TODO: what about putting it here? 
     T0 = 350  # K
     c0 = 1.0  # kmol/m^3
     r = 0.219 # m
@@ -176,7 +176,7 @@ def User_fym(x,u,d,t,py):
 Mx = 10 # Number of elements in each time step 
 
 # 2.3) Disturbance model for Offset-free control
-offree = "no"
+offree = "no" # TODO: this is also to be changed if you wnat to activate the offsetfree potentiality
 
 # 2.4) Initial condition
 xs_CSTR = np.array([0.878, 324.5, 0.659])

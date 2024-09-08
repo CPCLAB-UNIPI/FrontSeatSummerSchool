@@ -802,7 +802,6 @@ for ksim in range(Nsim):
                 xhat_k = w_opt[nxu:nxu+nx]
                 sl_k = w_opt[nw-ns:nw]
 
-            timings_solver[ksim] = solver.stats()['t_wall_total']
                 
         # Next predicted state (already including the disturbance estimate) 
         # i.e.x(k|k-1)        
@@ -813,6 +812,8 @@ for ksim in range(Nsim):
         if slacks == True:
             Sl.append(sl_k)
         TIME_DYN.append(etime)
+        
+        timings_solver[ksim] = solver.stats()['t_wall_total']
        
     ############### Updating variables xp and xhat ###########################
     if Fp_nominal is True:
