@@ -65,6 +65,8 @@ def main_mpc_open_loop():
     params = CSTRParameters()
     dt = 0.25
     num_rk4_steps = 10
+    xs = params.xs
+    us = params.us
     
     # Nonlinear model
     #model = setup_cstr_model(dt, num_rk4_steps, params)
@@ -86,8 +88,7 @@ def main_mpc_open_loop():
 
     model = Model(x, u, f_discrete, xs, us, name='cstr')
 
-    xs = params.xs
-    us = params.us
+    
     x0 = np.array([0.05, 0.75, 0.5]) * xs.ravel()
     N_horizon = 20
 
