@@ -2,8 +2,6 @@ import matplotlib.pyplot as plt
 import casadi as ca
 import numpy as np
 
-
-
 def plot_circle(x_i, y_i, r, i):
 
     eps = 1e-8
@@ -43,7 +41,6 @@ def plot_plate(x_val, y_val, R_val, a):
 
     plt.grid(True)
 
-    # plt.savefig("/tmp/plate.eps", format = "eps", bbox_inches = "tight")
 
 
 def main():
@@ -57,6 +54,7 @@ def main():
 
     R = ca.MX.sym("R", 1)
 
+
     r = np.array([R, R, R, 2*R, 2*R])
 
     # g is a list of constraint expressions
@@ -66,27 +64,45 @@ def main():
     g_max = []
 
     for i in range(n_p):
-        # TODO: add constraints 1. and 2. here using g, g_min and g_max
-        
-        
-        pass
+
+        g.append(x[i] - r[i])
+        g_min.append(0)
+        g_max.append(np.inf)
+
+        g.append(x[i] + r[i])
+        g_min.append(-np.inf)
+        g_max.append(a)
+
+        g.append(y[i] - r[i])
+        g_min.append(0)
+        g_max.append(np.inf)
+
+        g.append(y[i] + r[i])
+        g_min.append(-np.inf)
+        g_max.append(a)
 
     for i in range(n_p):
 
         for j in range(i+1, n_p):
 
-            # TODO: add constraints 3. here using g, g_min and g_max
-
-            pass
+            g.append((x[i] - x[j])**2 + (y[i] - y[j])**2 - (r[i] + r[j])**2)
+            g_min.append(0)
+            g_max.append(np.inf)
 
     g = ca.vertcat(*g)
 
+    # old initial guess
+    # x_init = np.array([1, 3, 8, 7, 3])
+    # y_init = np.array([1, 3, 8, 3, 7])
+    # R_init = 1.0
+
+    # new initial guess
     x_init = np.array([1, 3, 8, 7, 3])
-    y_init = np.array([1, 3, 8, 3, 7])
+    y_init = np.array([1, 2, 8, 3, 7])
     R_init = 1.0
 
-
     plot_plate(x_init, y_init, R_init, a)
+
 
     V = ca.vertcat(x, y, R)
 
@@ -116,9 +132,12 @@ def main():
     x_opt = V_opt[:n_p]
     y_opt = V_opt[n_p:-1]
     R_opt = V_opt[-1]
-    print("The optimal radius found is = ", R_opt)
+
     plot_plate(x_opt, y_opt, R_opt, a)
     plt.show()
+
+    print("R_opt is %f!" % R_opt)
+
 
 
 if __name__ == '__main__':
