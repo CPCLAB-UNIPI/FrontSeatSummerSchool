@@ -39,7 +39,7 @@ cwd = os.getcwd()
 ## Read data 
 
 # file name
-file_name = cwd + '/tts_data.csv'
+file_name = cwd + '/SIPPYcode_UNIPI/tts_data.csv'
 
 # read data file .csv
 Time, Y_1, Y_2, X_1, X_2, U_1, U_2, = [], [], [], [], [], [], []

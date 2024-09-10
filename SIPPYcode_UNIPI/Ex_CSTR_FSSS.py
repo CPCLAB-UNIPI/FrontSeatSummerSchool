@@ -379,57 +379,57 @@ EV_arx = ex_var(Yv_arx, Y_val)
 print('Explained Variance ARX-VAL',EV_arx)
 
         
-## Comparing with Linearized model
+# ## Comparing with Linearized model
 
-A_l = np.array([[0.2681, -0.00338, -0.00728], [9.703, 0.3279, -25.44], [0, 0, 1]])
-Bu_l = np.array([[-0.00537, 0.1655], [1.297, 97.91], [0, -6.637]])
-Bd_l = np.array([[-0.1175], [69.74] , [6.637]])
-B_l = np.hstack([Bu_l, Bd_l])
-C_l = np.array([[1, 0, 0], [0, 1, 0], [0, 0, 1]])
-D_l = np.zeros((p,m))
-x0_l = np.atleast_2d(Y_val[:,0])
-# 
-sys1 = cnt.ss(A_l, B_l, C_l, D_l, ts)
-sys2 = cnt.ss(Id_SS.A,Id_SS.B,Id_SS.C,Id_SS.D, ts)
-#
-K_1 = cnt.dcgain(sys1); K_2 = cnt.dcgain(sys2); 
-
-
-# Step Response (unitary +1)
-ys1, tstep1 = cnt.step(sys1)
-ys2, tstep2 = cnt.step(sys2)
-#
-plt.figure(5)
-plt.plot(tstep1, ys1[:,:,0]), plt.grid(),plt.plot(tstep2, ys2[:,:,0]), 
-plt.xlabel("Time")
-plt.ylabel("Output")
-plt.title("Step response")
-plt.grid()
-
-## Bode Plots
-w_v = np.logspace(-3,4,num=701)
-plt.figure(6)
-mag1, fi1, om = cnt.bode(sys1,w_v)
-mag2, fi2, om = cnt.bode(sys2,w_v)
-plt.subplot(2,1,1), plt.loglog(om,mag1), plt.grid(), 
-plt.loglog(om,mag1), plt.loglog(om,mag2),
-plt.xlabel("w"),plt.ylabel("Amplitude Ratio"), plt.title("Bode Plot")
-plt.subplot(2,1,2), plt.semilogx(om,fi1), plt.grid()
-plt.semilogx(om,fi1), plt.semilogx(om,fi2), 
-plt.xlabel("w"),plt.ylabel("phase")
-plt.legend(['System', 'SYS1', 'SYS2'])
+# A_l = np.array([[0.2681, -0.00338, -0.00728], [9.703, 0.3279, -25.44], [0, 0, 1]])
+# Bu_l = np.array([[-0.00537, 0.1655], [1.297, 97.91], [0, -6.637]])
+# Bd_l = np.array([[-0.1175], [69.74] , [6.637]])
+# B_l = np.hstack([Bu_l, Bd_l])
+# C_l = np.array([[1, 0, 0], [0, 1, 0], [0, 0, 1]])
+# D_l = np.zeros((p,m))
+# x0_l = np.atleast_2d(Y_val[:,0])
+# # 
+# sys1 = cnt.ss(A_l, B_l, C_l, D_l, ts)
+# sys2 = cnt.ss(Id_SS.A,Id_SS.B,Id_SS.C,Id_SS.D, ts)
+# #
+# K_1 = cnt.dcgain(sys1); K_2 = cnt.dcgain(sys2); 
 
 
-# SS
-xv_ss, Yid_ssl = fsetSIM.SS_lsim_process_form(A_l,B_l,C_l,D_l,U,x0_l)
+# # Step Response (unitary +1)
+# ys1, tstep1 = cnt.step(sys1)
+# ys2, tstep2 = cnt.step(sys2)
+# #
+# plt.figure(5)
+# plt.plot(tstep1, ys1[:,:,0]), plt.grid(),plt.plot(tstep2, ys2[:,:,0]), 
+# plt.xlabel("Time")
+# plt.ylabel("Output")
+# plt.title("Step response")
+# plt.grid()
 
-# Output
-plt.figure(2)
-for i in range(p):
-    plt.subplot(p,1,i+1)
-    plt.plot(Time,Yid_ssl[i,:])
-    plt.legend(['Data','ARX','ARMAX','SS','SS_lin'])
-    plt.grid()
+# ## Bode Plots
+# w_v = np.logspace(-3,4,num=701)
+# plt.figure(6)
+# mag1, fi1, om = cnt.bode(sys1,w_v)
+# mag2, fi2, om = cnt.bode(sys2,w_v)
+# plt.subplot(2,1,1), plt.loglog(om,mag1), plt.grid(), 
+# plt.loglog(om,mag1), plt.loglog(om,mag2),
+# plt.xlabel("w"),plt.ylabel("Amplitude Ratio"), plt.title("Bode Plot")
+# plt.subplot(2,1,2), plt.semilogx(om,fi1), plt.grid()
+# plt.semilogx(om,fi1), plt.semilogx(om,fi2), 
+# plt.xlabel("w"),plt.ylabel("phase")
+# plt.legend(['System', 'SYS1', 'SYS2'])
+
+
+# # SS
+# xv_ss, Yid_ssl = fsetSIM.SS_lsim_process_form(A_l,B_l,C_l,D_l,U,x0_l)
+
+# # Output
+# plt.figure(2)
+# for i in range(p):
+#     plt.subplot(p,1,i+1)
+#     plt.plot(Time,Yid_ssl[i,:])
+#     plt.legend(['Data','ARX','ARMAX','SS','SS_lin'])
+#     plt.grid()
 
 
 
