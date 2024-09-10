@@ -17,18 +17,19 @@ from Utilities import*
 ### 1) Simulation Fundamentals
 
 # 1.1) Simulation discretization parameters
-Nsim = 50 # Simulation length
+Nsim = 40 # Simulation length
 
-N = 20    # Horizon
+N = 50    # Horizon
 
-h = 0.25 # Time step
+h = 0.10 # Time step
 
 # 3.1.2) Symbolic variables
 xp = SX.sym("xp", 3) # process state vector       
 x = SX.sym("x", 3)  # model state vector          
 u = SX.sym("u", 2)  # control vector              
 y = SX.sym("y", 2)  # measured output vector      
-d = SX.sym("d", 0)  # disturbance                     
+d = SX.sym("d", 0)  # disturbance        
+# d = SX.sym("d", 2)  # disturbance               
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 ### 2) Process and Model construction 
@@ -54,7 +55,8 @@ def User_fxp_Cont(x,t,u,pxp,pxmp):
     + fx_p      - Non-linear plant function
     """ 
     
-    F0 = 0.1 #if_else(t <= 5, 0.1, if_else(t<= 15, 0.11, if_else(t<= 25, 0.08, 0.1)))
+    F0 = 0.1 #
+    # F0 = if_else(t <= 5, 0.1, if_else(t<= 15, 0.11, if_else(t<= 25, 0.08, 0.1)))
     T0 = 350  # K
     c0 = 1.0  # kmol/m^3
     r = 0.219 # m
@@ -176,7 +178,9 @@ def User_fym(x,u,d,t,py):
 Mx = 10 # Number of elements in each time step 
 
 # 2.3) Disturbance model for Offset-free control
-offree = "no" # TODO: this is also to be changed if you wnat to activate the offsetfree potentiality
+# offree = "nl"
+offree = "no" 
+# TODO: this is also to be changed if you wnat to activate the offsetfree potentiality
 
 # 2.4) Initial condition
 xs_CSTR = np.array([0.878, 324.5, 0.659])
