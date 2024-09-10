@@ -165,7 +165,7 @@ for i in range(m):
     if i == 0:
         plt.xlabel("Time [s]")
         plt.title('identification')
-plt.savefig('inputs_tts.png')
+plt.savefig('./SIPPYcode_UNIPI/inputsID_tts.png')
 
 # Output
 plt.figure(2)
@@ -183,7 +183,7 @@ for i in range(p):
     if i == 0:
         plt.xlabel("Time [s]")
         plt.title('identification')
-plt.savefig('outputs_tts.png')
+plt.savefig('./SIPPYcode_UNIPI/outputsID_tts.png')
     
 # Explained Variance
         
@@ -236,6 +236,8 @@ for i in range(m):
     plt.xlabel("Time")
     if i == 0:
         plt.title('validation')
+plt.savefig('./SIPPYcode_UNIPI/inputsVAL_tts.png')
+
 
 # Output
 plt.figure(4)
@@ -251,6 +253,7 @@ for i in range(p):
     plt.xlabel("Time")
     if i == 0:
         plt.title('validation')
+plt.savefig('./SIPPYcode_UNIPI/outputsVAL_tts.png')
          
 
 # Explained Variance

@@ -273,6 +273,7 @@ for i in range(m):
     plt.axis([0, tfin, 0.99*np.amin(U[i,:]), 1.01*np.amax(U[i,:])])
     if i == 0:
         plt.title('identification')
+plt.savefig('./SIPPYcode_UNIPI/inputsID_cstr.png')
 
 # Output
 plt.figure(2)
@@ -290,6 +291,7 @@ for i in range(p):
     plt.xlabel("Time")
     if i == 0:
         plt.title('identification')
+plt.savefig('./SIPPYcode_UNIPI/outputsID_cstr.png')
     
 # Explained Variance
 EV_arx = ex_var(Y_arx, Y)
@@ -357,6 +359,7 @@ for i in range(m):
     plt.axis([0, tfin, 0.99*np.amin(U_val[i,:]), 1.01*np.amax(U_val[i,:])])
     if i == 0:
         plt.title('validation')
+plt.savefig('./SIPPYcode_UNIPI/inputsVAL_cstr.png')
 
 # Output
 plt.figure(4)
@@ -372,6 +375,7 @@ for i in range(p):
     plt.xlabel("Time")
     if i == 0:
         plt.title('validation')
+plt.savefig('./SIPPYcode_UNIPI/outputsVAL_cstr.png')
          
 
 # Explained Variance
