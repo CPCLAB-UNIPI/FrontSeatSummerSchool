@@ -73,8 +73,7 @@ def export_ocp_solver(model, N, h, Q, R, Fmax=80):
     ocp.constraints.idxbu = np.array([0])
 
     # set QP solver
-    # ocp.solver_options.qp_solver = 'PARTIAL_CONDENSING_HPIPM'
-    ocp.solver_options.qp_solver = 'FULL_CONDENSING_QPOASES'
+    ocp.solver_options.qp_solver = 'PARTIAL_CONDENSING_HPIPM'
     ocp.solver_options.hessian_approx = 'GAUSS_NEWTON'
     ocp.solver_options.integrator_type = 'ERK'
 
