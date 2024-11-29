@@ -1,5 +1,5 @@
 # Use an official Ubuntu image as a parent image
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 WORKDIR /app
 
@@ -74,3 +74,4 @@ RUN pip install -v slycot
 
 # Add packages for Machine Learning tutorial
 RUN pip3 install --no-cache-dir keras
+RUN pip3 install --no-cache-dir neuromancer
